@@ -11,12 +11,8 @@ public class gui extends JFrame {
 	private static final long serialVersionUID = 1l;
 	private JPanel contentPane;
 	
-	//private int kahvia;
-	//rivate int teetä;
-	//private int kaakaota;
 
 	juomaAutomaatti machine = new juomaAutomaatti();
-	juomaAutomaatti uusi;
 	
 	String input1;
 	String input2;
@@ -127,31 +123,36 @@ public class gui extends JFrame {
 		mntmLataaAutomaatti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					juomaAutomaatti uusi = Sarjallistamista2.lueTiedostosta();
+					juomaAutomaatti machine2 = Sarjallistamista2.lueTiedostosta();
 					
-					int kahvi = uusi.getKahvia();
-					int tee = uusi.getTeetä();
-					int kaakao = uusi.getKaakaota();
+					int kahvia = machine2.getKahvia();
+					int teetä = machine2.getTeetä();
+					int kaakaota = machine2.getKaakaota();
 					
-					lblKahvidata.setText("Kahvia: " + kahvi);
+					machine.setKahvia(kahvia);
+					machine.setTeetä(teetä);
+					machine.setKaakaota(kaakaota);
 					
-					if (kahvi > 20) {
+					lblKahvidata.setText("Kahvia: " + machine.getKahvia());
+					
+					
+					if (kahvia > 20) {
 						lblKahvidata.setForeground(Color.BLACK);
 					} else {
 						lblKahvidata.setForeground(Color.RED);
 					}
 					
-					lblTeedata.setText("Teetä: " + tee);
+					lblTeedata.setText("Teetä: " + machine.getTeetä());
 					
-					if (tee > 20) {
+					if (teetä > 20) {
 						lblTeedata.setForeground(Color.BLACK);
 					} else {
 						lblTeedata.setForeground(Color.RED);
 					}
 					
-					lblKaakaodata.setText("Kaakaao: " + kaakao);
+					lblKaakaodata.setText("Kaakaota: " + machine.getKaakaota());
 					
-					if (kaakao > 20) {
+					if (kaakaota > 20) {
 						lblKaakaodata.setForeground(Color.BLACK);
 					} else {
 						lblKaakaodata.setForeground(Color.RED);
